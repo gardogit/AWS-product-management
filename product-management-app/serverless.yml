@@ -1,0 +1,59 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: edgardoirm
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: product-management-app
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: product-management-app
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+  environment:
+    MONGO_URI: ${env:MONGO_URI}
+
+plugins:
+  - serverless-offline
+
+functions:
+  createProduct:
+    handler: src/handlers/createProduct.handler
+    events:
+      - http:
+          path: products
+          method: post
+
+  getProducts:
+    handler: src/handlers/getProducts.handler
+    events:
+      - http:
+          path: products
+          method: get
+
+  getProduct:
+    handler: src/handlers/getProduct.handler
+    events:
+      - http:
+          path: products/{id}
+          method: get
+
+  updateProduct:
+    handler: src/handlers/updateProduct.handler
+    events:
+      - http:
+          path: products/{id}
+          method: put
+
+  deleteProduct:
+    handler: src/handlers/deleteProduct.handler
+    events:
+      - http:
+          path: products/{id}
+          method: delete
+
+  searchProducts:
+    handler: src/handlers/searchProducts.handler
+    events:
+      - http:
+          path: products/search
+          method: get

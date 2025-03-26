@@ -2,11 +2,14 @@ import mongoose from 'mongoose';
 
 let isConnected = false;
 
-export const connectToDatabase = async (): Promise<void> => {
-  if (isConnected) return;
+export const connectToDatabase = async () => {
+  if (isConnected) {
+    console.log('Using existing database connection');
+    return;
+  }
 
   try {
-    await mongoose.connect(process.env.MONGO_URI || '');
+    await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/test');
     isConnected = true;
     console.log('Connected to MongoDB');
   } catch (error) {

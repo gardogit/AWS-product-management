@@ -1,8 +1,8 @@
-import { APIGatewayProxyHandler } from 'aws-lambda';
-import { connectToDatabase } from 'infrastructure/db';
-import Product from 'domain/productModel';
+import { APIGatewayProxyHandler, APIGatewayProxyResult } from 'aws-lambda';
+import { connectToDatabase } from '../infrastructure/db';
+import Product from '../domain/productModel';
 
-export const handler: APIGatewayProxyHandler = async (event) => {
+export const handler: APIGatewayProxyHandler = async (event): Promise<APIGatewayProxyResult> => {
   try {
     await connectToDatabase();
     const data = JSON.parse(event.body || '{}');

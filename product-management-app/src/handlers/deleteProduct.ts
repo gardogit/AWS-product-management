@@ -1,11 +1,21 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
-import { connectToDatabase } from 'infrastructure/db';
-import Product from 'domain/productModel';
+import { connectToDatabase } from '../infrastructure/db';
+import Product from '../domain/productModel';
+import mongoose from 'mongoose';
 
 export const handler: APIGatewayProxyHandler = async (event) => {
   try {
     await connectToDatabase();
     const { id } = event.pathParameters || {};
+
+    // Validar el formato del ID
+    if (!id || !mongoose.Types.ObjectId.isValid(id)) {
+      return {
+        statusCode: 404,
+        body: JSON.stringify({ message: 'Product not found' }),
+      };
+    }
+
     const deletedProduct = await Product.findByIdAndDelete(id);
 
     if (!deletedProduct) {

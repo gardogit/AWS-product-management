@@ -1,6 +1,6 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
-import { connectToDatabase } from 'infrastructure/db';
-import Product from 'domain/productModel';
+import { connectToDatabase } from '../infrastructure/db';
+import Product from '../domain/productModel';
 
 export const handler: APIGatewayProxyHandler = async (event) => {
   try {

@@ -41,7 +41,6 @@ Esta aplicación permite gestionar productos mediante una API RESTful. Ofrece fu
 
 3. Configura las variables de entorno en el archivo `.env`:
    ```yaml
-   environment:
      MONGO_URI=<TU_URI_DE_MONGODB>
    ```
 

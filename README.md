@@ -30,7 +30,8 @@ Esta aplicación permite gestionar productos mediante una API RESTful. Ofrece fu
 1. Clona este repositorio:
    ```bash
    git clone https://github.com/gardogit/AWS-product-management.git
-   cd product-management-app
+   cd AWS-product-management
+
    ```
 
 2. Instala las dependencias:
@@ -38,11 +39,18 @@ Esta aplicación permite gestionar productos mediante una API RESTful. Ofrece fu
    npm install
    ```
 
-3. Configura las variables de entorno en el archivo `serverless.yml`:
+3. Configura las variables de entorno en el archivo `.env`:
    ```yaml
    environment:
-     MONGO_URI: <TU_URI_DE_MONGODB>
+     MONGO_URI=<TU_URI_DE_MONGODB>
    ```
+
+4. Configuración de MongoDB
+Para ejecutar esta aplicación, necesitas configurar la conexión a una base de datos MongoDB. Esto se hace definiendo la variable de entorno `MONGO_URI` en el archivo `.env` en el directorio raíz. Ejemplo:
+
+```plaintext
+MONGO_URI=mongodb+srv://<usuario>:<contraseña>@cluster0.mongodb.net/<nombre_base_datos>?retryWrites=true&w=majority
+```
 
 ## Ejecución local
 Para ejecutar la aplicación localmente, utiliza el plugin `serverless-offline`:

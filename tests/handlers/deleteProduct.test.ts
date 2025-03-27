@@ -1,8 +1,8 @@
-import { handler } from '../../src/handlers/deleteProduct';
+import { handler } from '@/handlers/deleteProduct';
 import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
-import Product from '../../src/domain/productModel';
+import Product from '@/domain/productModel';
 
 describe('deleteProduct handler', () => {
   let mongoServer: MongoMemoryServer;

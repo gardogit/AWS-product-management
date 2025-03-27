@@ -1,8 +1,8 @@
-import { handler } from '../../src/handlers/getProducts';
+import { handler } from '@/handlers/getProducts';
 import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
-import Product from '../../src/domain/productModel';
+import Product from '@/domain/productModel';
 
 describe('getProducts handler', () => {
   let mongoServer: MongoMemoryServer;
